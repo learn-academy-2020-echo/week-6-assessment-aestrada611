@@ -9,7 +9,7 @@
 # 1)
 class BlogPostsController < ApplicationController
   def index
-    # 2)
+    # 2) This is creating a 
     @posts = BlogPost.all
   end
 
