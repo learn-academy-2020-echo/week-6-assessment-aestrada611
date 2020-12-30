@@ -11,13 +11,12 @@ var people = [
 // Expected output example: "Ford Prefect is a hitchhiker." "Zaphod Beeblebrox is a president of the galaxy." "Arthus Dent is a radio employee."
 
 
-
 //the function will take in an array of objects and returns a sentence about each person with their names capitlaized
 //need to access the key name to extract the values  and extract occupation values in order to print job.
 //will have to either split string and capitlize the firstName of each of the two items in the array by mapping through it
 
 
-const firstName = (array) =>{
+const nameFinder = (array) =>{
 //I need to be able to access the values of name within the array
 console.log(array);
 
@@ -29,7 +28,6 @@ value.name)
 // name.map(value => value.toUpperCase)
 // might have to split it and capitalize first letter!
 console.log(name);
-
 
 
   let nameSplit = name.map(value => value.split(" "))
@@ -46,7 +44,7 @@ console.log(nameSplit);
 //will make the varialbe below the frirst letter of each string.
 // let  nameCapital = nameSplit.map(value => value.map(value => value.charAt(0)))
 
-let  firstCapital = nameSplit.map(value => value.map(value => value.charAt(0).toUpperCase() + value.slice(1, value.length)))
+let  capitalLettering = nameSplit.map(value => value.map(value => value.charAt(0).toUpperCase() + value.slice(1, value.length)))
 
 //was trying to do them as two different variables and then combine them at the end but saw it was much better to use the plus sign here and combine the strings using string concatenation
 
@@ -55,50 +53,35 @@ let  firstCapital = nameSplit.map(value => value.map(value => value.charAt(0).to
 // let combinedName = firstCapital + restOfName
 
 //tried multiple ways to join it using an array but i found out if i mapped and then joined it would avoid the commas and keep the data type as an array or else it would be a string!!
-let joinName = firstCapital.map((value,index) => value.join(" "))
+let joinName = capitalLettering.map(value => value.join(" "))
+
+//need to isolate each occupation
 let occupation = array.map((value,index) => value.occupation)
-
-
-//return `${occupation}`
 
 
 //might be a way to create a new statemnt through iteration or just have it filled out.
 //I have to use the spread operator!!
 
 //now i need to combine them some way using a for loop maybe
-console.log(...joinName);
-
-let finalArray = []
-
- for(let i = 0; i < array.length; i++ ) {
-    finalArray.push(`"${joinName[i]} is ${occupation[i]}!" `)
-   // array.forEach(function())
-}
-
-
-
-
-
-
-
 
 
 //I know there will be string interpoltation at the very end return
 
+let nameOccupation = []
 
-// return `${array.occupation}`
+ for(let i = 0; i < array.length; i++ ) {
+    nameOccupation.push(`"${joinName[i]} is a ${occupation[i]}!" `)
+   // array.forEach(function())
+}
 
-
-// console.log(restOfName);
-// console.log(combinedName);
 console.log(joinName);
 console.log(occupation);
 
-return finalArray.join("")
+//This will turn it back intor a string
+return nameOccupation.join("")
 }
 
-
-console.log(firstName(people))
+console.log(nameFinder(people))
 
 
 
@@ -117,24 +100,20 @@ var testingArray2 = [5, "Hola", 43, -34, "greetings", true]
 
 //create a funtion that takes in array and reuturns an array with only numbers divided by three
 //most likely will be a filter method to get a subset of the original array
+//then must iterate throught the shorter array and find the remainder for all of them
 
-const numberFilter = (array) => {
-  let filter = array.filter(value => {
-    return typeof value == "number"
+const remaindersOnly = (array) => {
+  let numberFilter = array.filter(value => {
+    return typeof value === "number"
     })
     //second one will be a map because i need the same number in the subset
-    let secondFilter = filter.map(value => {
+    let divideBy3 = numberFilter.map(value => {
       return value % 3
-   // if (typeof value == string ){
-   //   return value
-   // } else {
-   //
-   // }
   })
-  return secondFilter
+  return divideBy3
 }
-console.log(numberFilter(testingArray1));
-console.log(numberFilter(testingArray2));
+console.log(remaindersOnly(testingArray1));
+console.log(remaindersOnly(testingArray2));
 
 
 // --------------------3) Create a function that takes in two arrays as arguments returns one array with no duplicate values.
@@ -159,33 +138,27 @@ var testingArray4 = [7, "hi", 3, 1, "hi", 4, "hello", 4, 7]
 //    return arrayFilter
 //  }
 
-const unique = (array1, array2) => {
+const uniqueArray = (array1, array2) => {
  //  let map1 = array1.map(value => value)
  // let map2 = array2.map(value => value)
- let newArray = array1.concat(array2)
+ let combinedArray = array1.concat(array2)
 
   // console.log(map1);
-  console.log(newArray);
+  console.log(combinedArray);
 
 
 //have to know that third argumnet is the array refrencing itself in order to get the first instance
 //go through array and only return the frist instance of the index for the values so there are no dupicates
 //also need to do more reserach to know exacltey why this works. Ive used it before but want more understanding!
-let arrayFilter = newArray.filter((value, index, array) => {
+let arrayFilter = combinedArray.filter((value, index, array) => {
   return array.indexOf(value) === index
 
 })
-
-
-
 // i need to do more research on why this one works
 // let arrayFilter = [ ...new Set(newArray)]
-
-
-
 
 return arrayFilter
 }
 
 
- console.log(unique(testingArray3, testingArray4));
+ console.log(uniqueArray(testingArray3, testingArray4));
