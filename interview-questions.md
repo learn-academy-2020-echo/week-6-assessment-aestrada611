@@ -27,6 +27,11 @@ Then, research the question to expand on your answer. Even if you feel you have 
 After some research it seems that CRUD is related to restful routes but there are more restufl routes that may correspond to each RESTful route. Index and show correspond to read and only show data. New and create are routes that correspond with create and these two work together to make a new instance within the database. New allows for the form to be created and store the properties of the entry. New allows for those properties to be passed as params to actually create an instance of a class. Edit and update correspond to update and they work very similar to new and create. Edit shows the form and update takes the properties for an item as params and updates in the database. The last would be delete that corresponds to destroy which targets an instance and deletes it.
 
 
+2.0 answer
+Create/Update will call the params method
+Update, show, and destory will need an id
+
+
 
 3. Name three rails generator commands. What is created by each?
 

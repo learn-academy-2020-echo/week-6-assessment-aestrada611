@@ -10,19 +10,15 @@ var people = [
 ]
 // Expected output example: "Ford Prefect is a hitchhiker." "Zaphod Beeblebrox is a president of the galaxy." "Arthus Dent is a radio employee."
 
-
 //the function will take in an array of objects and returns a sentence about each person with their names capitlaized
 //need to access the key name to extract the values  and extract occupation values in order to print job.
 //will have to either split string and capitlize the firstName of each of the two items in the array by mapping through it
-
 
 const nameFinder = (array) =>{
 //I need to be able to access the values of name within the array
 console.log(array);
 
-  let name = array.map(value =>
-value.name)
-
+  let name = array.map(value => value.name)
 
 //now i have to capitalize the first letter of all names within the array of strings.
 // name.map(value => value.toUpperCase)
@@ -40,14 +36,12 @@ console.log(nameSplit);
 
 //console log is biggest help ever. i relized that nameSplit was an array of arrays so i would have to map in again in order to be able to use charAT for the string
 
-
 //will make the varialbe below the frirst letter of each string.
 // let  nameCapital = nameSplit.map(value => value.map(value => value.charAt(0)))
 
 let  capitalLettering = nameSplit.map(value => value.map(value => value.charAt(0).toUpperCase() + value.slice(1, value.length)))
 
 //was trying to do them as two different variables and then combine them at the end but saw it was much better to use the plus sign here and combine the strings using string concatenation
-
 
 // let restOfName = nameSplit.map(value => value.map(value => value.slice(1, value.length)))
 // let combinedName = firstCapital + restOfName
@@ -58,12 +52,10 @@ let joinName = capitalLettering.map(value => value.join(" "))
 //need to isolate each occupation
 let occupation = array.map((value,index) => value.occupation)
 
-
 //might be a way to create a new statemnt through iteration or just have it filled out.
 //I have to use the spread operator!!
 
 //now i need to combine them some way using a for loop maybe
-
 
 //I know there will be string interpoltation at the very end return
 
@@ -82,9 +74,6 @@ return nameOccupation.join("")
 }
 
 console.log(nameFinder(people))
-
-
-
 
 
 
@@ -111,6 +100,8 @@ const remaindersOnly = (array) => {
       return value % 3
   })
   return divideBy3
+  //One line solution
+  // return array.filter(value => typeof value === "number").map(value => value % 3)
 }
 console.log(remaindersOnly(testingArray1));
 console.log(remaindersOnly(testingArray2));
